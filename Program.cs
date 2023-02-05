@@ -2,18 +2,26 @@
 {
     class Program
     {
-        static async void Main(string[] args)
+        static void Main(string[] args)
         {
             String name = "x4amcd";
-            Console.WriteLine($"Hello, World! My name is {name}.");
-            Console.ReadKey(true);
-            using (var stream = Console.OpenStandardInput())
+            Console.WriteLine($"{name}");
+            Thread t = new Thread(new ThreadStart(ThreadProc));
+            t.Start();
+
+            t.Join();
+            Console.WriteLine("Main thread: ThreadProc.Join has returned.  Press Enter to end program.");
+            Console.ReadLine();
+        }
+
+        public static void ThreadProc()
+        {
+            for (int i = 0; i < 10; i++)
             {
-                var buffer = new byte[1];
-                var bytesRead = await stream.ReadAsync(buffer, 0, 1);
-                char c = (char)buffer[0];
-                Console.WriteLine(c);
+                var x = Console.ReadLine();
+                Console.WriteLine($"Read {x}");
             }
         }
+
     }
 }
