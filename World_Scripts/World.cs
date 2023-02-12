@@ -11,18 +11,17 @@ namespace x4amcd.World_Scripts
 {
     public static class World
     {
-        private static readonly List<List<IThing>> world = new();
-
+        public static List<List<IThing>> WorldVar { get; } = new();
         public static List<List<IThing>> GetLightMap(Tuple<int, int> position, int visualAcutity)
         {
             List<List<IThing>> lightMap = new();
-            for (int i = 0; i < visualAcutity; i++)
+            for (int i = 0, iOffest = -visualAcutity; i < (visualAcutity*2) +1; i++, iOffest++)
             {
                 lightMap.Add(new List<IThing>());
-                for (int j = 0; j < visualAcutity; j++)
+                for (int j = 0, jOffset = -visualAcutity; j < (visualAcutity*2) +1; j++,jOffset++)
                 {
                     lightMap[i].Add(
-                        world[position.Item1 + i][position.Item2 + j]
+                        WorldVar[position.Item1 + iOffest][position.Item2 + jOffset]
                     );
                 }
             }
@@ -32,7 +31,7 @@ namespace x4amcd.World_Scripts
         public static Tuple<int, int> GetPosition(IThing thing)
         {
             int column = -1;
-            int row = world.FindIndex((row) =>
+            int row = WorldVar.FindIndex((row) =>
             {
                 column = row.IndexOf(thing);
                 return column != -1;
@@ -42,42 +41,5 @@ namespace x4amcd.World_Scripts
                 new Tuple<int, int>(row, column);
         }
 
-        public static void PrintWorld()
-        {
-            Console.Write(
-                $"{Environment.NewLine}{PrintHelpers.WhiteSpace}|"
-            );
-            for (int i = 0; i < world.Count; i++)
-            {
-                Console.Write(
-                    i == world[i].Count - 1 ?
-                    $"{i}|{Environment.NewLine}" :
-                    $"{i}|"
-                );
-            }
-
-            int rowNumber = 0;
-            foreach (var row in world)
-            {
-                Console.Write($"{rowNumber++}|");
-                foreach (var thing in row)
-                {
-                    Console.Write($"x|");
-                }
-                Console.WriteLine();
-            }
-        }
-
-        public static void CreateBasicWorld(int rows, int columns)
-        {
-            for (int i = 0; i < rows; i++)
-            {
-                world.Add(new List<IThing>());
-                for (int j = 0; j < columns; j++)
-                {
-                    world[i].Add(new Rock());
-                }
-            }
-        }
     }
 }

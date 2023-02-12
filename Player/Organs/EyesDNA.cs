@@ -10,7 +10,7 @@ namespace x4amcd.Player.Organs
 {
     public class EyesDNA
     {
-        private readonly int visualAcuity = 5;
+        private readonly int visualAcuity = 1;
 
         public List<List<IThing>> SeeWorld(AdamDNA adamDNAInstance)
         {

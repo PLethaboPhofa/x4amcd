@@ -10,10 +10,12 @@ namespace x4amcd_Player_Scripts
     public class AdamDNA : IAdamDNA
     {
         private readonly EyesDNA eyes = new();
-        private List<List<IThing>> currentLightMap = new(); 
+        public int Value { get; set; }
+
+        public List<List<IThing>> CurrentLightMap { get; set;}= new();
         public void SeeWorld()
         {
-            this.currentLightMap = eyes.SeeWorld(this);
+            this.CurrentLightMap = eyes.SeeWorld(this);
         }
 
         public void RememberWorld()
@@ -39,6 +41,11 @@ namespace x4amcd_Player_Scripts
         public void ActOnWorld()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return "A:0";
         }
     }
 }

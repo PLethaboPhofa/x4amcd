@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 namespace x4amcd.Primordials
 {
-    public interface IThing { }
+    public interface IThing {
+        public int Value { get; set; }
+     }
     public interface IProcess { }
 }
