@@ -1,4 +1,5 @@
 using x4amcd.Player.Organs;
+using x4amcd.Player.Organs.Memory;
 using x4amcd.Primordials;
 using x4amcd.World_Scripts;
 
@@ -10,6 +11,7 @@ namespace x4amcd_Player_Scripts
     public class AdamDNA : IAdamDNA
     {
         private readonly EyesDNA eyes = new();
+        private readonly MemoryOrgan memory = new();
         public int Value { get; set; }
 
         public List<List<IThing>> CurrentLightMap { get; set;}= new();
@@ -20,6 +22,7 @@ namespace x4amcd_Player_Scripts
 
         public void RememberWorld()
         {
+            memory.Commit(CurrentLightMap);
             throw new NotImplementedException();
         }
 

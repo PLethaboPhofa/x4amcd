@@ -8,6 +8,7 @@ namespace x4amcd
     public
     static class Program
     {
+        static int TIME = 0;
         static void Main(string[] args)
         {
             const String name = "x4amcd";
@@ -47,6 +48,7 @@ namespace x4amcd
                 {
                     Environment.Exit(0);
                 }
+                TIME++;
             }
 
 
