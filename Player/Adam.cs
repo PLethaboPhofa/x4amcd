@@ -2,33 +2,36 @@ using x4amcd.Player.Organs;
 using x4amcd.Player.Organs.Memory;
 using x4amcd.Primordials;
 using x4amcd.World_Scripts;
+using x4amcd_Player_Scripts;
 
-namespace x4amcd_Player_Scripts
+namespace x4amcd.Player
 {
     // TODO: Implement an ADAM builder that instantiates eyes etc separately then builds an adam,
     // currently the DNA anology is not being used to full potiential. 
     public class AdamDNA : IAdamDNA
     {
         private readonly EyesDNA eyes = new();
-        private readonly MemoryOrgan memory = new();
+        private readonly MemoryOrgan Memory = new();
         public int Value
         {
-            get
-            {
-                return -1;
-            }
+            get => -1;
             set { }
         }
 
         public List<List<IThing>> CurrentLightMap { get; set; } = new();
         public void SeeWorld()
         {
-            this.CurrentLightMap = eyes.SeeWorld(this);
+            CurrentLightMap = eyes.SeeWorld(this);
         }
 
         public void RememberWorld()
         {
-            memory.Commit(CurrentLightMap);
+            Memory.Commit(World.GetPosition(this), eyes.VisualAcuity);
+        }
+
+        public List<List<IThing>> GetMask()
+        {
+            return Memory.Mask;
         }
 
         public void AbstractWorld()

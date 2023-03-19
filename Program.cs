@@ -1,6 +1,6 @@
-﻿using x4amcd.Utils;
+﻿using x4amcd.Player;
+using x4amcd.Utils;
 using x4amcd.World_Scripts;
-using x4amcd_Player_Scripts;
 
 namespace x4amcd
 {
@@ -26,15 +26,14 @@ namespace x4amcd
 
         public static void LetThereBeLight()
         {
-            WorldCreation.CreateBasicWorld(World.WorldVar, 8, 8);
+            World.WorldVar = WorldCreation.CreateBasicWorld(10, 10);
         }
 
         public static void AndHeMadeMan()
         {
             World.WorldVar[4][4] = adam;
             adam.SeeWorld();
-            PrintHelpers.PrintWorld(adam.CurrentLightMap);
-
+            adam.RememberWorld();
             PrintHelpers.PrintWorld(adam.CurrentLightMap);
         }
 
@@ -43,9 +42,10 @@ namespace x4amcd
             while (true)
             {
                 PrintHelpers.PrintWorld(World.WorldVar);
+                PrintHelpers.PrintWorld(adam.GetMask());
                 string? x = Console.ReadLine();
                 Console.WriteLine($"Read {x}");
-                adam.RememberWorld();
+                adam.GetMask();
                 if (x == "x")
                 {
                     Environment.Exit(0);
