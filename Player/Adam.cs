@@ -5,16 +5,22 @@ using x4amcd.World_Scripts;
 
 namespace x4amcd_Player_Scripts
 {
-
     // TODO: Implement an ADAM builder that instantiates eyes etc separately then builds an adam,
     // currently the DNA anology is not being used to full potiential. 
     public class AdamDNA : IAdamDNA
     {
         private readonly EyesDNA eyes = new();
         private readonly MemoryOrgan memory = new();
-        public int Value { get; set; }
+        public int Value
+        {
+            get
+            {
+                return -1;
+            }
+            set { }
+        }
 
-        public List<List<IThing>> CurrentLightMap { get; set;}= new();
+        public List<List<IThing>> CurrentLightMap { get; set; } = new();
         public void SeeWorld()
         {
             this.CurrentLightMap = eyes.SeeWorld(this);
@@ -23,7 +29,6 @@ namespace x4amcd_Player_Scripts
         public void RememberWorld()
         {
             memory.Commit(CurrentLightMap);
-            throw new NotImplementedException();
         }
 
         public void AbstractWorld()
@@ -48,7 +53,7 @@ namespace x4amcd_Player_Scripts
 
         public override string ToString()
         {
-            return "A:0";
+            return " A ";
         }
     }
 }

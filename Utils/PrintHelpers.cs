@@ -13,8 +13,12 @@ namespace x4amcd.Utils
 
         public static void SetColor(int value)
         {
-            
-            if (value > 5)
+            if (value == -1)
+            {
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            }
+            else if (value > 5)
             {
                 Console.BackgroundColor = ConsoleColor.Blue;
                 Console.ForegroundColor = ConsoleColor.White;
@@ -47,9 +51,7 @@ namespace x4amcd.Utils
 
         public static void PrintColNumbers(List<List<IThing>> world)
         {
-            Console.Write(
-                $"{Environment.NewLine}"
-            );
+            Console.Write($"{Environment.NewLine}");
             for (int j = 0; j < PrintHelpers.ThingLength - 2; j++)
             {
                 Console.Write(PrintHelpers.WhiteSpace);
@@ -57,9 +59,7 @@ namespace x4amcd.Utils
             Console.Write("|");
             for (int i = 0; i < world.Count; i++)
             {
-                Console.Write(
-                    $"{i}"
-                );
+                Console.Write($"{i}");
                 for (int j = 0; j < PrintHelpers.ThingLength - 1; j++)
                 {
                     Console.Write(PrintHelpers.WhiteSpace);
@@ -74,6 +74,7 @@ namespace x4amcd.Utils
                 }
             }
         }
+
         public static void PrintRows(List<List<IThing>> world)
         {
             int rowNumber = 0;
