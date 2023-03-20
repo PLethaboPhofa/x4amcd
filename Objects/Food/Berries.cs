@@ -8,7 +8,7 @@ using x4amcd.Utils;
 
 namespace x4amcd.Objects.Food
 {
-    public class Berries : IThing
+    public class Berries : IFoodItem
     {
         public int Value
         {
@@ -18,7 +18,7 @@ namespace x4amcd.Objects.Food
 
         public override String ToString()
         {
-            return (" B ")[..PrintHelpers.ThingLength];
+            return (" B " + Value)[..PrintHelpers.ThingLength];
         }
     }
 

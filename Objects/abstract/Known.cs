@@ -7,7 +7,7 @@ namespace x4amcd.Objects.@abstract
     {
         public int Value
         {
-            get => 2;
+            get => 1;
             set { }
         }
 

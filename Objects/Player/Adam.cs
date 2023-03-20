@@ -1,6 +1,9 @@
+using x4amcd.Objects.Player.Organs.Memory;
+using x4amcd.Objects.Player.Organs.Planning;
+using x4amcd.Objects.Player.Organs.Planning.Feed;
 using x4amcd.Player.Organs;
-using x4amcd.Player.Organs.Memory;
 using x4amcd.Primordials;
+using x4amcd.Utils;
 using x4amcd.World_Scripts;
 
 using x4amcd_Player_Scripts;
@@ -13,6 +16,8 @@ namespace x4amcd.Objects.Player
     {
         private readonly EyesDNA eyes = new();
         private readonly MemoryOrgan Memory = new();
+
+        private readonly List<IGoal> Goals = new();
         public int Value
         {
             get => 0;
@@ -32,17 +37,20 @@ namespace x4amcd.Objects.Player
 
         public List<List<IThing>> GetMask()
         {
-            return Memory.Mask;
+            return Memory.Maya;
         }
 
         public void AbstractWorld()
         {
-            throw new NotImplementedException();
+            Goals.Add(new Feed(this));
         }
 
         public void ModelWorld()
         {
-            throw new NotImplementedException();
+            foreach (var goal in Goals)
+            {
+                goal.SubGoals?.ForEach(subGoal => subGoal.IsSuccessful());
+            }
         }
 
         public void ChooseWorld()
@@ -57,7 +65,7 @@ namespace x4amcd.Objects.Player
 
         public override string ToString()
         {
-            return " A ";
+            return (" A " + Value)[..PrintHelpers.ThingLength];
         }
     }
 }

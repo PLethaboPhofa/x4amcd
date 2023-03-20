@@ -1,4 +1,5 @@
-﻿using x4amcd.Objects.Player;
+﻿using x4amcd.Objects.Food;
+using x4amcd.Objects.Player;
 using x4amcd.Utils;
 using x4amcd.World_Scripts;
 
@@ -32,8 +33,11 @@ namespace x4amcd
         public static void AndHeMadeMan()
         {
             World.WorldVar[4][4] = adam;
+            World.WorldVar[4][5] = new Berries();
             adam.SeeWorld();
             adam.RememberWorld();
+            adam.AbstractWorld();
+            adam.ModelWorld();
             PrintHelpers.PrintWorld(adam.CurrentLightMap);
         }
 

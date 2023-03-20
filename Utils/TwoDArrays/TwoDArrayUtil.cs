@@ -1,3 +1,4 @@
+using x4amcd.Exceptions;
 using x4amcd.Objects;
 using x4amcd.Objects.@abstract;
 using x4amcd.Primordials;
@@ -18,6 +19,19 @@ namespace x4amcd.Utils.twodarrays
                 }
             }
             return twoDArray;
+        }
+
+        public static Tuple<int, int> GetPosition(List<List<IThing>> twoDArray, IThing thing)
+        {
+            int column = -1;
+            int row = twoDArray.FindIndex((row) =>
+            {
+                column = row.IndexOf(thing);
+                return column != -1;
+            });
+            return column == -1 ?
+                throw new EThingNotFound() :
+                new Tuple<int, int>(row, column);
         }
     }
 }

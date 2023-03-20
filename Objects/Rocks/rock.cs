@@ -28,7 +28,7 @@ namespace x4amcd.Objects
             {
                 if (privateValue == 0)
                 {
-                    privateValue = rnd.Next(2) + 14;
+                    privateValue = rnd.Next(2) + 13;
                 }
                 return privateValue;
             }
