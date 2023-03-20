@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using x4amcd.Objects.Player;
 using x4amcd.Primordials;
 using x4amcd.World_Scripts;
 

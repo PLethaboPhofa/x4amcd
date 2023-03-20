@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using x4amcd.Primordials;
 
 namespace x4amcd.Utils
@@ -9,25 +10,12 @@ namespace x4amcd.Utils
     public static class PrintHelpers
     {
         public static readonly String WhiteSpace = " ";
-        public static readonly int ThingLength = 3;
+        public static readonly int ThingLength = 4;
 
         public static void SetColor(int value)
         {
-            if (value == -1)
-            {
-                Console.BackgroundColor = ConsoleColor.Green;
-                Console.ForegroundColor = ConsoleColor.Cyan;
-            }
-            else if (value > 5)
-            {
-                Console.BackgroundColor = ConsoleColor.Blue;
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-            else
-            {
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-            }
+            Console.BackgroundColor = (ConsoleColor)value;
+            Console.ForegroundColor = (ConsoleColor)value + 1;
         }
 
         public static void ResetColor()

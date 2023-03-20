@@ -7,13 +7,13 @@ namespace x4amcd.Objects.@abstract
     {
         public int Value
         {
-            get => -3;
+            get => 2;
             set { }
         }
 
         public override String ToString()
         {
-            return ("K:" + Value)[..PrintHelpers.ThingLength];
+            return (" K " + Value)[..PrintHelpers.ThingLength];
         }
     }
 }

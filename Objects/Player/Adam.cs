@@ -2,9 +2,10 @@ using x4amcd.Player.Organs;
 using x4amcd.Player.Organs.Memory;
 using x4amcd.Primordials;
 using x4amcd.World_Scripts;
+
 using x4amcd_Player_Scripts;
 
-namespace x4amcd.Player
+namespace x4amcd.Objects.Player
 {
     // TODO: Implement an ADAM builder that instantiates eyes etc separately then builds an adam,
     // currently the DNA anology is not being used to full potiential. 
@@ -14,7 +15,7 @@ namespace x4amcd.Player
         private readonly MemoryOrgan Memory = new();
         public int Value
         {
-            get => -1;
+            get => 0;
             set { }
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+
 using x4amcd.Primordials;
 using x4amcd.Utils;
 
@@ -27,7 +28,7 @@ namespace x4amcd.Objects
             {
                 if (privateValue == 0)
                 {
-                    privateValue = rnd.Next(8) + 1;
+                    privateValue = rnd.Next(2) + 14;
                 }
                 return privateValue;
             }
